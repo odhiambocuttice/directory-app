@@ -1,25 +1,35 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useParams, useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+import { DataContext } from "../context/DataContext";
 
 export const RegistrationForm = () => {
   const {
     register,
     reset,
+    handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const [phoneNumber, setPhoneNumber] = React.useState("");
+  const navigate = useNavigate();
+  // const location = useLocation();
+  // const params = useParams();
 
-  console.log(phoneNumber);
+  // const [phoneNumber, setPhoneNumber] = React.useState("");
+  const { setPhoneNumber } = React.useContext(DataContext);
 
   // Function called on submit that sends form data to the DB
-  const handleSubmit = async (event) => {
+  const onSubmit = async (data) => {
     // Destrcture data object
-    // const { name, email, subject, message } = data;
+    const { phone_number } = data;
+    console.log(data);
+
     try {
-      event.preventDefault();
-      setPhoneNumber(event.target.phone_number.value);
+      setPhoneNumber(phone_number);
+      navigate("/otp");
+      // navigate(`/otp/${phoneNumber}`);
+
       // Send data to DB
 
       // Clear form
@@ -28,11 +38,6 @@ export const RegistrationForm = () => {
       console.log(e);
     }
   };
-
-  const navigate = useNavigate();
-  const location = useLocation();
-  const params = useParams();
-
   return (
     <div className="h-screen flex justify-center items-center">
       <div className="flex w-full lg:w-[800px]  space-y-8">
@@ -42,7 +47,7 @@ export const RegistrationForm = () => {
           </h1>
           <form
             className="bg-white rounded-md shadow-2xl p-5"
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit(onSubmit)}
             noValidate
           >
             <h1 className="text-gray-600 font-bold text-2xl mb-1">
@@ -204,18 +209,12 @@ export const RegistrationForm = () => {
               )}
             </div>
 
-            <Link to={`/otp/${phoneNumber}`}>
-              <button
-                type="submit"
-                // value="Submit"
-                // onClick={() => {
-                //   navigate("/otp" + location.search);
-                // }}
-                className=" w-1/4 bg-green-500 mt-5 py-2 rounded hover:bg-green-600 hover:-translate-y-1 transition-all duration-500 text-white font-semibold mb-2"
-              >
-                Submit Details
-              </button>
-            </Link>
+            <button
+              type="submit"
+              className=" w-1/4 bg-green-500 mt-5 py-2 rounded hover:bg-green-600 hover:-translate-y-1 transition-all duration-500 text-white font-semibold mb-2"
+            >
+              Submit Details
+            </button>
           </form>
         </div>
       </div>

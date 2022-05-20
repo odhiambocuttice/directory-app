@@ -1,5 +1,5 @@
-import { createContext, useState, useEffect } from "react";
-import axios from "axios";
+import { createContext, useState } from "react";
+// import axios from "axios";
 import { Link } from "react-router-dom";
 
 export const DataContext = createContext({});
@@ -29,10 +29,13 @@ export const Button = () => {
 };
 
 export const DataProvider = ({ children }) => {
+  const [phoneNumber, setPhoneNumber] = useState("");
   return (
     <DataContext.Provider
       value={{
         Button,
+        phoneNumber,
+        setPhoneNumber,
       }}
     >
       {children}

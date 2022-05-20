@@ -6,19 +6,14 @@ import { DataContext } from "../context/DataContext";
 
 export const OTPVerification = () => {
   const [OTP, setOTP] = React.useState("");
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
+  const { handleSubmit, reset } = useForm();
 
-  const { Button } = React.useContext(DataContext);
+  const { Button, phoneNumber } = React.useContext(DataContext);
 
   // Function called on submit that sends form data to the DB
   const submitData = async (data) => {
     // Destrcture data object
-    const { name, email, subject, message } = data;
+
     try {
       // Send data to DB
 
@@ -40,6 +35,14 @@ export const OTPVerification = () => {
       </div>
 
       <div className="w-1/8 bg-white p-14 shadow-2xl ">
+        <div className="">
+          <p className="mb-3 lg:text-lg font-bold">
+            <span className="text-sm font-normal text-gray-700">
+              OTP sent to phone number{" "}
+            </span>
+            {phoneNumber}
+          </p>
+        </div>
         <OTPInput
           value={OTP}
           className="bg-gray-200 border rounded-md px-10 py-3"
