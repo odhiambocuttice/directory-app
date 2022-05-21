@@ -5,10 +5,10 @@ import { useForm } from "react-hook-form";
 import { DataContext } from "../context/DataContext";
 
 export const OTPVerification = () => {
-  const [OTP, setOTP] = React.useState("");
+  // const [OTP, setOTP] = React.useState("");
   const { handleSubmit, reset } = useForm();
 
-  const { Button, phoneNumber } = React.useContext(DataContext);
+  const { Button, phoneNumber, setOTP, OTP } = React.useContext(DataContext);
 
   // Function called on submit that sends form data to the DB
   const submitData = async (data) => {

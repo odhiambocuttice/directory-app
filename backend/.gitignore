@@ -136,3 +136,5 @@ venv/*
 
 # ignore gitattributes
 .gitattributes
+
+local_settings

@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import { DataContext } from "../context/DataContext";
 
@@ -13,16 +14,12 @@ export const RegistrationForm = () => {
   } = useForm();
 
   const navigate = useNavigate();
-  // const location = useLocation();
-  // const params = useParams();
-
-  // const [phoneNumber, setPhoneNumber] = React.useState("");
   const { setPhoneNumber } = React.useContext(DataContext);
 
   // Function called on submit that sends form data to the DB
   const onSubmit = async (data) => {
     // Destrcture data object
-    const { phone_number } = data;
+    const { phone_number, name, email } = data;
     console.log(data);
 
     try {
@@ -31,6 +28,28 @@ export const RegistrationForm = () => {
       // navigate(`/otp/${phoneNumber}`);
 
       // Send data to DB
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const postData = async () => {
+        await axios
+          .post(
+            `${process.env.REACT_APP_API_URL}/api/create/`,
+            { name, email, phone_number },
+            config
+          )
+          .then((response) => {
+            console.log(response.data); // view the response
+          })
+          .catch((error) => {
+            console.log(error); // check if any error
+          });
+      };
+
+      postData();
 
       // Clear form
       reset();

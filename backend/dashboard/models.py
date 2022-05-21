@@ -7,7 +7,7 @@ class Registration(models.Model):
     name = models.CharField(max_length=100, blank=False, null=False)
     email = models.CharField(max_length=50, blank=False)
     phone_number = models.IntegerField(blank=False)
-    OTP = models.IntegerField(blank=False)
+    OTP = models.IntegerField(blank=True, null=True)
     created = models.DateTimeField(db_index=True, default=timezone.now)
     updated = models.DateTimeField(db_index=True, default=timezone.now)
  
