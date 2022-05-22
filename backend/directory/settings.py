@@ -68,7 +68,7 @@ WSGI_APPLICATION = 'directory.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-
+DATABASES = {}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
