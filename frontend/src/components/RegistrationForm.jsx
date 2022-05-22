@@ -58,7 +58,7 @@ export const RegistrationForm = () => {
     }
   };
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="h-screen flex justify-center items-start">
       <div className="flex w-full lg:w-[800px]  space-y-8">
         <div className="w-full px-8 md:px-32 lg:px-24">
           <h1 className="font-semibold text-4xl text-gray-600 my-6">
