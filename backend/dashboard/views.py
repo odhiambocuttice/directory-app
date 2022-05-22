@@ -1,3 +1,4 @@
+from .filters import RegistrationFilter
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Registration
@@ -7,15 +8,18 @@ from rest_framework.generics import ListAPIView, CreateAPIView
 
 # Create your views here.
 class RegistrationRetrieveView(ListAPIView):
-    queryset = Registration.objects.all().order_by('created')
+    queryset = Registration.objects.all()
     serializer_class = RegistrationSerializer
-    # permissions_classes = (permissions.AllowAny, )
+    filter_class = RegistrationFilter
+    permissions_classes = (permissions.AllowAny, )
+    name = 'Registration list'
 
 
 class RegistrationCreateView(CreateAPIView):
     queryset = Registration.objects.all().order_by('created')
     serializer_class = RegistrationSerializer
-    # permissions_classes = (permissions.AllowAny, )
+    filter = RegistrationFilter
+    permissions_classes = (permissions.AllowAny, )
 
     # def post(self, request, format=None):
     #     data = self.request.data
