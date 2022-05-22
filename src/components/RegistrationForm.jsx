@@ -1,7 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 import { DataContext } from "../context/DataContext";
 
@@ -14,43 +13,17 @@ export const RegistrationForm = () => {
   } = useForm();
 
   const navigate = useNavigate();
-  const { setPhoneNumber } = React.useContext(DataContext);
+  const { setPhoneNumber, setRegData } = React.useContext(DataContext);
 
   // Function called on submit that sends form data to the DB
   const onSubmit = async (data) => {
     // Destrcture data object
-    const { phone_number, name, email } = data;
-    console.log(data);
+    const { phone_number } = data;
+    setRegData(data);
 
     try {
       setPhoneNumber(phone_number);
       navigate("/otp");
-      // navigate(`/otp/${phoneNumber}`);
-
-      // Send data to DB
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-
-      const postData = async () => {
-        await axios
-          .post(
-            "https://registration-registry-app.herokuapp.com/api/create/",
-            // "http://localhost:8000/api/create/",
-            { name, email, phone_number },
-            config
-          )
-          .then((response) => {
-            console.log(response.data); // view the response
-          })
-          .catch((error) => {
-            console.log(error); // check if any error
-          });
-      };
-
-      postData();
 
       // Clear form
       reset();
@@ -58,6 +31,7 @@ export const RegistrationForm = () => {
       console.log(e);
     }
   };
+
   return (
     <div className="h-screen flex justify-center items-start">
       <div className="flex w-full lg:w-[800px]  space-y-8">
@@ -240,4 +214,4 @@ export const RegistrationForm = () => {
       </div>
     </div>
   );
-};
+};;

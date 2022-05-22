@@ -30,15 +30,16 @@ export const Button = () => {
 
 export const DataProvider = ({ children }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [OTP, setOTP] = useState("");
+  
+  const [regData, setRegData] = useState({});
   return (
     <DataContext.Provider
       value={{
         Button,
         phoneNumber,
         setPhoneNumber,
-        OTP,
-        setOTP,
+        regData,
+        setRegData,
       }}
     >
       {children}

@@ -86,6 +86,7 @@ export const DataTable = () => {
       try {
         const res = await axios.get(
           "https://registration-registry-app.herokuapp.com/api/view/"
+          // "http://localhost:8000/api/view/"
         );
         setData(res.data);
         setQuery("");
