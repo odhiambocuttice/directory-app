@@ -17,7 +17,7 @@ export const DataTable = () => {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/view/`
+          "https://registration-registry-app.herokuapp.com/api/view/"
         );
         setData(res.data);
       } catch (err) {}
@@ -84,7 +84,7 @@ export const DataTable = () => {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/view/`
+          "https://registration-registry-app.herokuapp.com/api/view/"
         );
         setData(res.data);
         setQuery("");

@@ -37,7 +37,7 @@ export const RegistrationForm = () => {
       const postData = async () => {
         await axios
           .post(
-            `${process.env.REACT_APP_API_URL}/api/create/`,
+            "https://registration-registry-app.herokuapp.com/api/create/",
             { name, email, phone_number },
             config
           )
