@@ -70,6 +70,7 @@ WSGI_APPLICATION = 'directory.wsgi.application'
 
 DATABASES = {}
 
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

@@ -38,6 +38,7 @@ export const RegistrationForm = () => {
         await axios
           .post(
             "https://registration-registry-app.herokuapp.com/api/create/",
+            // "http://localhost:8000/api/create/",
             { name, email, phone_number },
             config
           )
