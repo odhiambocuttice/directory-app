@@ -96,7 +96,7 @@ export const DataTable = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col justify-start items-center">
+    <div className="min-h-screen flex flex-col justify-start items-center">
       <div className="">
         <input
           type="search"
